@@ -28,11 +28,12 @@ The project uses [Makefiles](https://www.gnu.org/software/make/manual/html_node/
 - `add-package package=XXX`: Installs the package XXX in the app, ex: `make install package=requests`.
 - `check-typing`: Runs a static analyzer over the code in order to find issues.
 - `check-format`: Checks the code format.
+- `dev`: Runs the app in development mode.
 - `format`: Formats the code.
 - `help` : Shows this help.
 - `install`: Installs the app packages.
 - `local-setup`: Sets up the local environment (e.g. install git hooks).
-- `run`: Runs the app.
+- `run`: Runs the app in production mode.
 - `test`: Run all the tests.
 - `update`: Updates the app packages.
 - `watch`: Run all the tests in watch mode.
