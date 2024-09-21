@@ -42,9 +42,16 @@ check-format: ## Checks the code format
 format:  ## Format python code
 	 poetry run black src tests
 
+.PHONY: test-unit
+test-unit: ## Run unit tests
+	 PYTHONPATH=. poetry run pytest -n auto tests/unit -ra
+
+.PHONY: test-aceptance
+test-aceptance: ## Run acceptance tests
+	 PYTHONPATH=. poetry run pytest -n auto tests/acceptance -ra
+
 .PHONY: test
-test: ## Run all the tests
-	 PYTHONPATH=. poetry run pytest -n auto tests -ra
+test: test-unit test-aceptance ## Run all the tests
 
 .PHONY: watch
 watch: ## Run all the tests in watch mode

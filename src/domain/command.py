@@ -1,8 +1,8 @@
-from logging import Logger
+import logging
 import uuid
 
 from abc import ABC, abstractmethod
-from main import logger
+from logging import Logger
 from typing import Any
 
 
@@ -18,7 +18,7 @@ class CommandResponse(ABC):
 
 
 class CommandHandler(ABC):
-    def __init__(self, logger: Logger = logger) -> None:
+    def __init__(self, logger: Logger = logging.getLogger(__name__)) -> None:
         self._logger = logger
 
     @abstractmethod
