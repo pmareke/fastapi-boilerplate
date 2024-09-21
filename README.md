@@ -26,10 +26,8 @@
 The project uses [Makefiles](https://www.gnu.org/software/make/manual/html_node/Introduction.html) to run the most common tasks:
 
 - `add-package package=XXX`: Installs the package XXX in the app, ex: `make install package=requests`.
-- `build`: Builds the app.
 - `check-typing`: Runs a static analyzer over the code in order to find issues.
 - `check-format`: Checks the code format.
-- `check-style`: Checks the code style.
 - `format`: Formats the code.
 - `help` : Shows this help.
 - `install`: Installs the app packages.
