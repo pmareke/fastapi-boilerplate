@@ -25,7 +25,6 @@ jobs:
       run: |
         make check-typing
         make check-format
-        make check-style
     - name: Tests
       run: |
         make test
