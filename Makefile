@@ -38,10 +38,6 @@ check-typing:  ## Run a static analyzer over the code to find issues
 check-format: ## Checks the code format
 	 poetry run black --check src tests
 
-.PHONY: check-style
-check-style: ## Checks the code style
-	 poetry run ruff check **/*.py
-
 .PHONY: format
 format:  ## Format python code
 	 poetry run black src tests
@@ -55,7 +51,7 @@ watch: ## Run all the tests in watch mode
 	 PYTHONPATH=. poetry run ptw --runner "pytest -n auto tests -ra"
 
 .PHONY: pre-commit
-pre-commit: check-format check-typing check-style test
+pre-commit: check-format check-typing test
 	
 .PHONY: rename-project
 rename-project: ## Rename project make rename name=new-name

@@ -12,6 +12,10 @@
 - There is a `tests` folder with the tests files.
   - In order to add new tests please follow the [pytest](https://docs.pytest.org/en/7.1.x/getting-started.html) recommendations.
 - The production code goes inside the `src` folder.
+    - The `delivery` folder contains the `API` logic.
+    - The `domain` folder contains the domain classes of the app.
+    - The `use_cases` folder contains the business logic.
+    - The `common` folder contains the shared logic.
 - Inside the `scripts` folder you can find the git hooks files.
 
 ## Project commands
@@ -50,5 +54,4 @@ This project uses [Poetry](https://python-poetry.org) as the package manager.
 
 - [mypy](https://mypy.readthedocs.io/en/stable/): A static type checker.
 - [black](https://black.readthedocs.io/en/stable/): A Python formatter.
-- [ruff](https://github.com/astral-sh/ruff): An extremely fast Python linter, written in Rust..
 
