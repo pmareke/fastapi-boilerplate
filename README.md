@@ -16,6 +16,7 @@
 - The production code goes inside the `src` folder.
     - The `delivery` folder contains the `API` logic.
     - The `domain` folder contains the domain classes of the app.
+    - The `infrastructure` folder contains the classes that interact with the external services.
     - The `use_cases` folder contains the business logic.
     - The `common` folder contains the shared logic.
 - Inside the `scripts` folder you can find the git hooks files.
