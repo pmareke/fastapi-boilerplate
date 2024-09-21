@@ -6,13 +6,15 @@ from http.client import OK
 from main import app
 
 
-class TestHealthController:
+class TestHelloController:
     @pytest.fixture
     def client(self) -> TestClient:
         return TestClient(app)
 
-    def test_health_controller(self, client: TestClient) -> None:
-        response = client.get("/api/v1/health")
+    def test_hello_controller(self, client: TestClient) -> None:
+        name = "peter"
+
+        response = client.get(f"/api/v1/hello/{name}")
 
         expect(response.status_code).to(equal(OK))
-        expect(response.json()).to(equal({"ok": True}))
+        expect(response.json()).to(equal({"message": f"Hello, {name}!"}))
