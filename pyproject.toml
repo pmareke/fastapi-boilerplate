@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "fastapi-boilerplate"
+version = "0.1.0"
+description = "This repository is a FastAPI boilerplate to use as a fast starter point"
+authors = ["Pedro López Mareque <pedro.lopez.mareque@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["standard"], version = "^0.115.0"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+pytest-xdist = "^3.6.1"
+expects = "^0.9.0"
+black = "^24.8.0"
+mypy = "^1.11.2"
+ruff = "^0.6.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
