@@ -12,6 +12,7 @@
 
 - There is a `tests` folder with the tests files.
     - The `unit` folder contains the unit tests, also know as [F.I.R.S.T](https://dzone.com/articles/writing-your-first-unit-tests#:~:text=First%20class%20developers%20write%20their,self%2Dvalidating%2C%20and%20timely.&text=Unit%20tests%20are%20required%20to%20test%20singular%20sections%20of%20code.).
+    - The `integration` folder contains the tests that will validate the connection between our app and the external services.
     - The `acceptance` folder contains the tests that validate the app behavior from the outside.
 - The production code goes inside the `src` folder.
     - The `delivery` folder contains the `API` logic.
