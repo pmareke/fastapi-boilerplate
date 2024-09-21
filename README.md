@@ -11,7 +11,8 @@
 ## Folder structure
 
 - There is a `tests` folder with the tests files.
-  - In order to add new tests please follow the [pytest](https://docs.pytest.org/en/7.1.x/getting-started.html) recommendations.
+    - The `unit` folder contains the unit tests, also know as [F.I.R.S.T](https://dzone.com/articles/writing-your-first-unit-tests#:~:text=First%20class%20developers%20write%20their,self%2Dvalidating%2C%20and%20timely.&text=Unit%20tests%20are%20required%20to%20test%20singular%20sections%20of%20code.).
+    - The `acceptance` folder contains the tests that validate the app behavior from the outside.
 - The production code goes inside the `src` folder.
     - The `delivery` folder contains the `API` logic.
     - The `domain` folder contains the domain classes of the app.
