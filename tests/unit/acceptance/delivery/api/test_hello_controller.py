@@ -11,7 +11,7 @@ from src.use_cases.say_hello_command import SayHelloCommandHandler
 
 
 class TestHelloController:
-    ERROR_MESSAGE = "fatal error"
+    ERROR_MESSAGE = "any error message"
 
     def _failing_handler(self) -> SayHelloCommandHandler:
         with Mimic(Stub, SayHelloCommandHandler) as self.handler:

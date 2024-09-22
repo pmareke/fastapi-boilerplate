@@ -26,4 +26,4 @@ def hello(
         message = response.message()
         return HelloResponse(message=message)
     except SayHelloCommandHandlerException as ex:
-        raise HTTPException(status_code=500, detail="fatal error")
+        raise HTTPException(status_code=500, detail=f"{ex}")

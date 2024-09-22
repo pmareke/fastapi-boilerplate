@@ -40,7 +40,8 @@ class SayHelloCommandHandler(CommandHandler):
         try:
             name = self._hello_client.get(command.name)
         except SayHelloClientException as ex:
-            raise SayHelloCommandHandlerException from ex
+            error_message = f"Command {command_id}: {ex}"
+            raise SayHelloCommandHandlerException(error_message) from ex
 
         response = SayHelloCommandResponse(command, name)
         message = response.message()
