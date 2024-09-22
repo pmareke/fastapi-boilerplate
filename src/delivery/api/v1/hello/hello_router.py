@@ -23,7 +23,7 @@ async def say_hello_command_handler(
     return SayHelloCommandHandler(client)
 
 
-@hello_router.get("/api/v1/hello/{name}", response_model=HelloResponse)
+@hello_router.get("/hello/{name}", response_model=HelloResponse)
 def hello(
     name: str, handler: CommandHandler = Depends(say_hello_command_handler)
 ) -> HelloResponse:

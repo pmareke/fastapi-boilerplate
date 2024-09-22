@@ -11,7 +11,7 @@ async def health_command_handler() -> CommandHandler:
     return HealthCommandHandler()
 
 
-@health_router.get("/api/v1/health", response_model=HealthResponse)
+@health_router.get("/health", response_model=HealthResponse)
 def health(handler: CommandHandler = Depends(health_command_handler)) -> HealthResponse:
     command = HealthCommand()
     response = handler.execute(command)

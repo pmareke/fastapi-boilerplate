@@ -3,6 +3,7 @@ import logging
 from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
+from src.common import config
 from src.common.logger import setup_logging
 from src.delivery.api.v1.health.health_router import health_router
 from src.delivery.api.v1.hello.hello_router import hello_router
@@ -23,7 +24,7 @@ async def lifespan(_app: FastAPI) -> AsyncGenerator:
     logger.info("FastAPI server finished!")
 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(title=config.PROJECT_NAME, lifespan=lifespan)
 
-app.include_router(health_router)
-app.include_router(hello_router)
+app.include_router(health_router, prefix=config.API_V1_STR)
+app.include_router(hello_router, prefix=config.API_V1_STR)
