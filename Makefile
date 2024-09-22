@@ -10,6 +10,10 @@ local-setup: ## Sets up the local environment (e.g. install git hooks)
 	scripts/local-setup.sh
 	make install
 
+.PHONY: build
+build: ## Install the app packages
+	 docker build -t fastapi-boilerplate .
+
 .PHONY: install
 install: ## Install the app packages
 	 poetry install
@@ -46,20 +50,27 @@ format:  ## Format python code
 test-unit: ## Run unit tests
 	 PYTHONPATH=. poetry run pytest -n auto tests/unit -ra
 
-.PHONY: test-aceptance
-test-aceptance: ## Run acceptance tests
+.PHONY: test-integration
+test-integration: ## Run integration tests
+	 PYTHONPATH=. poetry run pytest -n auto tests/integration -ra
+
+.PHONY: test-acceptance
+test-acceptance: ## Run acceptance tests
 	 PYTHONPATH=. poetry run pytest -n auto tests/acceptance -ra
 
 .PHONY: test
-test: test-unit test-aceptance ## Run all the tests
+test: test-unit test-integration test-acceptance ## Run all the tests
 
 .PHONY: watch
 watch: ## Run all the tests in watch mode
 	 PYTHONPATH=. poetry run ptw --runner "pytest -n auto tests -ra"
 
 .PHONY: pre-commit
-pre-commit: check-format check-typing test
+pre-commit: check-format check-typing test-unit
 	
+.PHONY: pre-push
+pre-push: test-integration test-acceptance
+
 .PHONY: rename-project
 rename-project: ## Rename project make rename name=new-name
 	sed -i 's/fastapi-boilerplate/$(name)/' pyproject.toml

@@ -19,4 +19,5 @@ def hello(
 ) -> HelloResponse:
     command = SayHelloCommand(name)
     response = handler.execute(command)
-    return HelloResponse(message=response.message())
+    message = response.message()
+    return HelloResponse(message=message)

@@ -17,9 +17,10 @@ class SayHelloCommandResponse(CommandResponse):
 
 class SayHelloCommandHandler(CommandHandler):
     def execute(self, command: SayHelloCommand) -> SayHelloCommandResponse:
-        self._logger.info(f"Command {command.command_id}: HealthCommandHandler#execute")
-        say_hello_command_response = SayHelloCommandResponse(command)
-        self._logger.info(
-            f"Command {command.command_id}: SayHelloCommandResponse {say_hello_command_response.message()}"
-        )
-        return say_hello_command_response
+        command_id = command.command_id
+        self._logger.info(f"Command {command_id}: HealthCommandHandler#execute")
+
+        response = SayHelloCommandResponse(command)
+        message = response.message()
+        self._logger.info(f"Command {command_id}: SayHelloCommandResponse {message}")
+        return response

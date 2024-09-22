@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI) -> AsyncGenerator:
+async def lifespan(_app: FastAPI) -> AsyncGenerator:
     setup_logging()
     logger.info("Starting FastAPI server...")
 
@@ -20,7 +20,7 @@ async def lifespan(app: FastAPI) -> AsyncGenerator:
 
     # Graceful shutdown
     sleep(5)  # wait for the app to finish processing requests
-    logger.info("FastAPI serve finished!")
+    logger.info("FastAPI server finished!")
 
 
 app = FastAPI(lifespan=lifespan)
