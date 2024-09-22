@@ -1,2 +1,2 @@
-API_V1_STR = "/api/v1"
+API_V1_PREFIX = "/api/v1"
 PROJECT_NAME = "FastAPI Template"
