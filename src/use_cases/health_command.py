@@ -1,3 +1,5 @@
+from logging import Logger
+import logging
 from src.domain.command import Command, CommandHandler, CommandResponse
 
 
@@ -15,6 +17,9 @@ class HealthCommandResponse(CommandResponse):
 
 
 class HealthCommandHandler(CommandHandler):
+    def __init__(self, logger: Logger = logging.getLogger(__name__)) -> None:
+        self._logger = logger
+
     def execute(self, command: HealthCommand) -> HealthCommandResponse:
         command_id = command.command_id
         self._logger.info(f"Command {command_id}: HealthCommandHandler#execute")

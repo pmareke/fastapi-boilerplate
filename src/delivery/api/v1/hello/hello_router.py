@@ -5,12 +5,14 @@ from src.use_cases.say_hello_command import (
 )
 from src.domain.command import CommandHandler
 from src.delivery.api.v1.hello.hello_response import HelloResponse
+from src.infrastructure.hello.hello_client import DummyHelloClient
 
 hello_router: APIRouter = APIRouter()
 
 
 async def say_hello_command_handler() -> CommandHandler:
-    return SayHelloCommandHandler()
+    hello_client = DummyHelloClient()
+    return SayHelloCommandHandler(hello_client)
 
 
 @hello_router.get("/api/v1/hello/{name}", response_model=HelloResponse)
