@@ -16,8 +16,7 @@ class SayHelloCommand(Command):
 
 
 class SayHelloCommandResponse(CommandResponse):
-    def __init__(self, command: SayHelloCommand, name: str) -> None:
-        self.command = command
+    def __init__(self, name: str) -> None:
         self.name = name
 
     def message(self) -> str:
@@ -43,7 +42,7 @@ class SayHelloCommandHandler(CommandHandler):
             error_message = f"Command {command_id}: {ex}"
             raise SayHelloCommandHandlerException(error_message) from ex
 
-        response = SayHelloCommandResponse(command, name)
+        response = SayHelloCommandResponse(name)
         message = response.message()
         self._logger.info(f"Command {command_id}: SayHelloCommandResponse {message}")
         return response
