@@ -25,6 +25,7 @@ update: ## Updates the app packages
 .PHONY: add-package
 add-package: ## Installs a new package in the app. ex: make install package=XXX
 	 poetry add $(package)
+	 poetry install
 
 .PHONY: run
 run: ## Runs the app in production mode
@@ -64,6 +65,12 @@ test: test-unit test-integration test-acceptance ## Run all the tests
 .PHONY: watch
 watch: ## Run all the tests in watch mode
 	 PYTHONPATH=. poetry run ptw --runner "pytest -n auto tests -ra"
+
+.PHONY: coverage
+coverage: ## Generates the coverage report
+	 PYTHONPATH=. poetry run coverage run --branch -m pytest tests
+	 PYTHONPATH=. poetry run coverage html
+	 @open "${PWD}/htmlcov/index.html"
 
 .PHONY: pre-commit
 pre-commit: check-format check-typing test-unit
