@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
+from http.client import BAD_REQUEST
 from src.domain.exceptions import SayHelloCommandHandlerException
 from src.use_cases.say_hello_command import (
     SayHelloCommand,
@@ -32,4 +33,4 @@ def hello(
         message = response.message()
         return HelloResponse(message=message)
     except SayHelloCommandHandlerException as ex:
-        raise HTTPException(status_code=500, detail=f"{ex}")
+        raise HTTPException(status_code=BAD_REQUEST, detail=f"{ex}")
