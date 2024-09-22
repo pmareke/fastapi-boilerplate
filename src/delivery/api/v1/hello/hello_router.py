@@ -10,7 +10,7 @@ from src.domain.hello_client import HelloClient
 from src.delivery.api.v1.hello.hello_response import HelloResponse
 from src.infrastructure.hello.hello_client import DummyHelloClient
 
-hello_router: APIRouter = APIRouter()
+hello: APIRouter = APIRouter()
 
 
 async def hello_client() -> DummyHelloClient:
@@ -23,8 +23,8 @@ async def say_hello_command_handler(
     return SayHelloCommandHandler(client)
 
 
-@hello_router.get("/hello/{name}", response_model=HelloResponse)
-def hello(
+@hello.get("/hello/{name}", response_model=HelloResponse)
+def get(
     name: str, handler: CommandHandler = Depends(say_hello_command_handler)
 ) -> HelloResponse:
     command = SayHelloCommand(name)
