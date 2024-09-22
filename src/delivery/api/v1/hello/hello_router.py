@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
+from src.domain.exceptions import SayHelloCommandHandlerException
 from src.use_cases.say_hello_command import (
     SayHelloCommand,
     SayHelloCommandHandler,
@@ -20,6 +21,9 @@ def hello(
     name: str, handler: CommandHandler = Depends(say_hello_command_handler)
 ) -> HelloResponse:
     command = SayHelloCommand(name)
-    response = handler.execute(command)
-    message = response.message()
-    return HelloResponse(message=message)
+    try:
+        response = handler.execute(command)
+        message = response.message()
+        return HelloResponse(message=message)
+    except SayHelloCommandHandlerException as ex:
+        raise HTTPException(status_code=500, detail="fatal error")

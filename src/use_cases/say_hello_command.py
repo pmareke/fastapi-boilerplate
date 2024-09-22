@@ -2,6 +2,10 @@ import logging
 
 from logging import Logger
 from src.domain.command import Command, CommandHandler, CommandResponse
+from src.domain.exceptions import (
+    SayHelloClientException,
+    SayHelloCommandHandlerException,
+)
 from src.domain.hello_client import HelloClient
 
 
@@ -33,7 +37,11 @@ class SayHelloCommandHandler(CommandHandler):
         command_id = command.command_id
         self._logger.info(f"Command {command_id}: HealthCommandHandler#execute")
 
-        name = self._hello_client.get(command.name)
+        try:
+            name = self._hello_client.get(command.name)
+        except SayHelloClientException as ex:
+            raise SayHelloCommandHandlerException from ex
+
         response = SayHelloCommandResponse(command, name)
         message = response.message()
         self._logger.info(f"Command {command_id}: SayHelloCommandResponse {message}")
