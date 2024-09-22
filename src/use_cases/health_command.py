@@ -9,9 +9,6 @@ class HealthCommand(Command):
 
 
 class HealthCommandResponse(CommandResponse):
-    def __init__(self, command: HealthCommand) -> None:
-        self.command = command
-
     def message(self) -> bool:
         return True
 
@@ -24,7 +21,7 @@ class HealthCommandHandler(CommandHandler):
         command_id = command.command_id
         self._logger.info(f"Command {command_id}: HealthCommandHandler#execute")
 
-        response = HealthCommandResponse(command)
+        response = HealthCommandResponse()
         message = response.message()
         self._logger.info(f"Command {command_id}: HealthCommandResponse {message}")
         return response
