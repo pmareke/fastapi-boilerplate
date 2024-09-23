@@ -5,6 +5,7 @@ from expects import expect, equal
 from fastapi.testclient import TestClient
 from http.client import BAD_REQUEST
 from main import app
+from src.common import config
 from src.delivery.api.v1.hello.hello_router import say_hello_command_handler
 from src.domain.exceptions import SayHelloCommandHandlerException
 from src.use_cases.say_hello_command import SayHelloCommandHandler
@@ -27,7 +28,7 @@ class TestHelloController:
         app.dependency_overrides[say_hello_command_handler] = self._failing_handler
         invalid_name = "any-invalid-name"
 
-        response = client.get(f"/api/v1/hello/{invalid_name}")
+        response = client.get(f"{config.API_V1_PREFIX}/hello/{invalid_name}")
 
         expect(response.status_code).to(equal(BAD_REQUEST))
         expect(response.json()).to(equal({"detail": self.ERROR_MESSAGE}))

@@ -4,6 +4,7 @@ from expects import expect, equal
 from fastapi.testclient import TestClient
 from http.client import OK
 from main import app
+from src.common import config
 
 
 class TestHealthController:
@@ -12,7 +13,7 @@ class TestHealthController:
         return TestClient(app)
 
     def test_health_controller(self, client: TestClient) -> None:
-        response = client.get("/api/v1/health")
+        response = client.get(f"{config.API_V1_PREFIX}/health")
 
         expect(response.status_code).to(equal(OK))
         expect(response.json()).to(equal({"ok": True}))
