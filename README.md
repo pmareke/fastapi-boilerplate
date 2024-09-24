@@ -3,7 +3,7 @@
 - This repository is meant to be used as a fast starter point.
 - The Python version is the 3.12.
 - The project has configured a [Github Action](https://github.com/pmareke/fastapi-boilerplate/actions) which runs on every push to the `main` branch.
-- The project has a `Dockerfile` ready to use in order to deploy the app.
+- The project has a `Dockerfile` ready to use to deploy the app in production.
 
 ## Requirements
 - You only need to have [Poetry](https://python-poetry.org) installed.
