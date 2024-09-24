@@ -29,7 +29,7 @@ add-package: ## Installs a new package in the app. ex: make install package=XXX
 
 .PHONY: run
 run: ## Runs the app in production mode
-	poetry run fastapi run
+	OPENAPI_URL= poetry run fastapi run
 
 .PHONY: dev
 dev: ## Runs the app in development mode
