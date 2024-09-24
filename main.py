@@ -24,7 +24,6 @@ async def lifespan(_app: FastAPI) -> AsyncGenerator:
 
 
 settings = Settings()
-
 app = FastAPI(
     title=settings.project_name,
     description="This is the documentation of the FastAPI template project.",
