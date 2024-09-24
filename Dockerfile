@@ -16,4 +16,4 @@ COPY src /code/src
 
 EXPOSE 8000
 
-CMD ["poetry", "run", "fastapi", "run"]
+CMD ["OPENAPI_URL=", "poetry", "run", "fastapi", "run"]
