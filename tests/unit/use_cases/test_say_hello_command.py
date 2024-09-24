@@ -8,7 +8,7 @@ from src.infrastructure.hello.hello_client import DummyHelloClient
 from src.use_cases.say_hello_command import SayHelloCommand, SayHelloCommandHandler
 
 
-class TestSayHelloCommand:
+class TestSayHelloCommandHandler:
     def test_execute(self) -> None:
         name = "John"
         command = SayHelloCommand(name)
