@@ -1,5 +1,3 @@
-import pytest
-
 from doublex import ANY_ARG, Mimic, Stub
 from expects import expect, equal
 from fastapi.testclient import TestClient
@@ -19,11 +17,8 @@ class TestHelloController:
             self.handler.execute(ANY_ARG).raises(exception)
         return self.handler  # type: ignore
 
-    @pytest.fixture
-    def client(self) -> TestClient:
-        return TestClient(app)
-
-    def test_hello_controller(self, client: TestClient) -> None:
+    def test_hello_controller(self) -> None:
+        client = TestClient(app)
         app.dependency_overrides[say_hello_command_handler] = self._failing_handler
         invalid_name = "any-invalid-name"
 

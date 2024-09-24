@@ -6,7 +6,7 @@ from http.client import OK
 from main import app, settings
 
 
-class TestHealthController:
+class TestHealthControllerAcceptance:
     @pytest.fixture
     def client(self) -> TestClient:
         return TestClient(app)

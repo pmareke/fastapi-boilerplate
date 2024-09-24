@@ -3,7 +3,7 @@ from src.domain.exceptions import SayHelloClientException
 from src.infrastructure.hello.hello_client import DummyHelloClient
 
 
-class TestDummyHelloClientIntegrtion:
+class TestDummyHelloClientIntegration:
     def test_get_name(self) -> None:
         expected_name = "Yes"
         client = DummyHelloClient()
