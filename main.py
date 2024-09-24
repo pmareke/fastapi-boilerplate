@@ -3,7 +3,6 @@ import logging
 from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
-from src.common import config
 from src.common.logger import setup_logging
 from src.common.settings import Settings
 from src.delivery.api.v1.health.health_router import health
@@ -27,11 +26,11 @@ async def lifespan(_app: FastAPI) -> AsyncGenerator:
 settings = Settings()
 
 app = FastAPI(
-    title=config.PROJECT_NAME,
+    title=settings.project_name,
     description="This is the documentation of the FastAPI template project.",
     lifespan=lifespan,
     openapi_url=settings.openapi_url,
 )
 
-app.include_router(prefix=config.API_V1_PREFIX, router=health)
-app.include_router(prefix=config.API_V1_PREFIX, router=hello)
+app.include_router(prefix=settings.api_v1_prefix, router=health)
+app.include_router(prefix=settings.api_v1_prefix, router=hello)
