@@ -1,5 +1,6 @@
-from logging import Logger
 import logging
+from logging import Logger
+
 from src.domain.command import Command, CommandHandler, CommandResponse
 
 

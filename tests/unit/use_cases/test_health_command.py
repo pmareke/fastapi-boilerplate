@@ -1,4 +1,5 @@
 from expects import be_true, expect
+
 from src.use_cases.health_command import HealthCommand, HealthCommandHandler
 
 

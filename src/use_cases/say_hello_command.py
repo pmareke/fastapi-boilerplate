@@ -1,6 +1,6 @@
 import logging
-
 from logging import Logger
+
 from src.domain.command import Command, CommandHandler, CommandResponse
 from src.domain.exceptions import (
     SayHelloClientException,

@@ -1,7 +1,9 @@
-from doublex import ANY_ARG, Mimic, Stub
-from expects import expect, equal
-from fastapi.testclient import TestClient
 from http.client import BAD_REQUEST
+
+from doublex import ANY_ARG, Mimic, Stub
+from expects import equal, expect
+from fastapi.testclient import TestClient
+
 from main import app, settings
 from src.delivery.api.v1.hello.hello_router import say_hello_command_handler
 from src.domain.exceptions import SayHelloCommandHandlerException

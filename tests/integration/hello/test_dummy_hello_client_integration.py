@@ -1,4 +1,5 @@
 from expects import equal, expect, raise_error
+
 from src.domain.exceptions import SayHelloClientException
 from src.infrastructure.hello.hello_client import DummyHelloClient
 

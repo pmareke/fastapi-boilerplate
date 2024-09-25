@@ -1,8 +1,9 @@
-import pytest
-
-from expects import expect, equal
-from fastapi.testclient import TestClient
 from http.client import OK
+
+import pytest
+from expects import equal, expect
+from fastapi.testclient import TestClient
+
 from main import app, settings
 
 

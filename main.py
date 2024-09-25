@@ -1,13 +1,14 @@
 import logging
-
 from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
+from time import sleep
+
 from fastapi import FastAPI
+
 from src.common.logger import setup_logging
 from src.common.settings import Settings
 from src.delivery.api.v1.health.health_router import health
 from src.delivery.api.v1.hello.hello_router import hello
-from time import sleep
 
 
 @asynccontextmanager

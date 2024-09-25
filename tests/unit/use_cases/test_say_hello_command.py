@@ -1,8 +1,9 @@
-from expects import equal, expect, raise_error
 from doublex import Mimic, Stub
+from expects import equal, expect, raise_error
+
 from src.domain.exceptions import (
-    SayHelloCommandHandlerException,
     SayHelloClientException,
+    SayHelloCommandHandlerException,
 )
 from src.infrastructure.hello.hello_client import DummyHelloClient
 from src.use_cases.say_hello_command import SayHelloCommand, SayHelloCommandHandler

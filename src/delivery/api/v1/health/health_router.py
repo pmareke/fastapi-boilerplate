@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 
-from src.domain.command import CommandHandler
 from src.delivery.api.v1.health.health_response import HealthResponse
+from src.domain.command import CommandHandler
 from src.use_cases.health_command import HealthCommand, HealthCommandHandler
 
 health: APIRouter = APIRouter()
