@@ -40,9 +40,17 @@ dev: ## Runs the app in development mode
 check-typing:  ## Run a static analyzer over the code to find issues
 	poetry run mypy .
 
-.PHONY: check-format
-check-format: ## Checks the code format
+.PHONY: check-lint
+check-lint: ## Checks the code style
 	poetry run ruff check
+
+.PHONY: lint
+lint: ## Lints the code format
+	poetry run ruff check --fix
+
+.PHONY: check-format
+check-format:  ## Check format python code
+	poetry run ruff format --check
 
 .PHONY: format
 format:  ## Format python code
@@ -74,7 +82,7 @@ coverage: ## Generates the coverage report
 	@open "${PWD}/htmlcov/index.html"
 
 .PHONY: pre-commit
-pre-commit: check-format check-typing test-unit
+pre-commit: check-lint check-format check-typing test-unit
 	
 .PHONY: pre-push
 pre-push: test-integration test-acceptance

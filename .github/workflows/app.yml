@@ -23,6 +23,7 @@ jobs:
         poetry install
     - name: Check style, format and lint
       run: |
+        make check-lint
         make check-typing
         make check-format
     - name: Tests
