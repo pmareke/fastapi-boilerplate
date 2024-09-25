@@ -58,27 +58,27 @@ format:  ## Format python code
 
 .PHONY: test-unit
 test-unit: ## Run unit tests
-	PYTHONPATH=. poetry run pytest -n auto tests/unit -ra
+	poetry run pytest -n auto tests/unit -ra
 
 .PHONY: test-integration
 test-integration: ## Run integration tests
-	PYTHONPATH=. poetry run pytest -n auto tests/integration -ra
+	poetry run pytest -n auto tests/integration -ra
 
 .PHONY: test-acceptance
 test-acceptance: ## Run acceptance tests
-	PYTHONPATH=. poetry run pytest -n auto tests/acceptance -ra
+	poetry run pytest -n auto tests/acceptance -ra
 
 .PHONY: test
 test: test-unit test-integration test-acceptance ## Run all the tests
 
 .PHONY: watch
 watch: ## Run all the tests in watch mode
-	PYTHONPATH=. poetry run ptw --runner "pytest -n auto tests -ra"
+	poetry run ptw --runner "pytest -n auto tests -ra"
 
 .PHONY: coverage
 coverage: ## Generates the coverage report
-	PYTHONPATH=. poetry run coverage run --branch -m pytest tests
-	PYTHONPATH=. poetry run coverage html
+	poetry run coverage run --branch -m pytest tests
+	poetry run coverage html
 	@open "${PWD}/htmlcov/index.html"
 
 .PHONY: pre-commit
