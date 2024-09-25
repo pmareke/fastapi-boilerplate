@@ -59,5 +59,5 @@ This project uses [Poetry](https://python-poetry.org) as the package manager.
 ### Code style
 
 - [mypy](https://mypy.readthedocs.io/en/stable/): A static type checker.
-- [black](https://black.readthedocs.io/en/stable/): A Python formatter.
+- [ruff](https://docs.astral.sh/ruff/installation/): A Python linter and formatter.
 
