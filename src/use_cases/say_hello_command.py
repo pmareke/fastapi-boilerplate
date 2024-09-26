@@ -27,7 +27,7 @@ class SayHelloCommandHandler(CommandHandler):
     def __init__(
         self,
         hello_client: HelloClient,
-        logger: Logger = logging.getLogger(__name__),
+        logger: Logger = logging.getLogger("server"),
     ) -> None:
         self._hello_client = hello_client
         self._logger = logger

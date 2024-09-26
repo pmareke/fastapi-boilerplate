@@ -14,7 +14,7 @@ from src.delivery.api.v1.hello.hello_router import hello
 @asynccontextmanager
 async def lifespan(_app: FastAPI) -> AsyncGenerator:
     setup_logging()
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger("server")
     logger.info("Starting FastAPI server...")
 
     yield
