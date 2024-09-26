@@ -1,7 +1,6 @@
-import logging
 from logging import Logger
 
-from src.common.settings import settings
+from src.common.logger import logger
 from src.domain.command import Command, CommandHandler, CommandResponse
 
 
@@ -16,9 +15,7 @@ class HealthCommandResponse(CommandResponse):
 
 
 class HealthCommandHandler(CommandHandler):
-    def __init__(
-        self, logger: Logger = logging.getLogger(settings.logger_name)
-    ) -> None:
+    def __init__(self, logger: Logger = logger) -> None:
         self._logger = logger
 
     def execute(self, command: HealthCommand) -> HealthCommandResponse:

@@ -1,9 +1,9 @@
-from logging import INFO, Formatter, StreamHandler, getLogger
+from logging import INFO, Formatter, Logger, StreamHandler, getLogger
 
 from src.common.settings import settings
 
 
-def setup_logging() -> None:
+def setup_logging() -> Logger:
     format = "%(levelname)s: %(asctime)s - %(message)s"
     formatter = Formatter(format)
 
@@ -14,3 +14,7 @@ def setup_logging() -> None:
     logger = getLogger(settings.logger_name)
     logger.setLevel(INFO)
     logger.addHandler(handler)
+    return logger
+
+
+logger = setup_logging()
