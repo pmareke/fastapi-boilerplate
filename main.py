@@ -6,7 +6,7 @@ from time import sleep
 from fastapi import FastAPI
 
 from src.common.logger import setup_logging
-from src.common.settings import Settings
+from src.common.settings import settings
 from src.delivery.api.v1.health.health_router import health
 from src.delivery.api.v1.hello.hello_router import hello
 
@@ -14,7 +14,7 @@ from src.delivery.api.v1.hello.hello_router import hello
 @asynccontextmanager
 async def lifespan(_app: FastAPI) -> AsyncGenerator:
     setup_logging()
-    logger = logging.getLogger("server")
+    logger = logging.getLogger(settings.logger_name)
     logger.info("Starting FastAPI server...")
 
     yield
@@ -24,7 +24,6 @@ async def lifespan(_app: FastAPI) -> AsyncGenerator:
     logger.info("FastAPI server finished!")
 
 
-settings = Settings()
 app = FastAPI(
     title=settings.project_name,
     description="This is the documentation of the FastAPI template project.",

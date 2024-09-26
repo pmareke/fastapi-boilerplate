@@ -1,6 +1,7 @@
 import logging
 from logging import Logger
 
+from src.common.settings import settings
 from src.domain.command import Command, CommandHandler, CommandResponse
 from src.domain.exceptions import (
     SayHelloClientException,
@@ -27,7 +28,7 @@ class SayHelloCommandHandler(CommandHandler):
     def __init__(
         self,
         hello_client: HelloClient,
-        logger: Logger = logging.getLogger("server"),
+        logger: Logger = logging.getLogger(settings.logger_name),
     ) -> None:
         self._hello_client = hello_client
         self._logger = logger
