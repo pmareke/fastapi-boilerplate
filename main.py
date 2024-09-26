@@ -23,7 +23,7 @@ async def lifespan(_app: FastAPI) -> AsyncGenerator:
 
 app = FastAPI(
     title=settings.project_name,
-    description="This is the documentation of the FastAPI template project.",
+    description=settings.description,
     lifespan=lifespan,
     openapi_url=settings.openapi_url,
 )
