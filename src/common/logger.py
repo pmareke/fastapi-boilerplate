@@ -4,17 +4,17 @@ from src.common.settings import settings
 
 
 def setup_logging() -> Logger:
-    format = "%(levelname)s: %(asctime)s - %(message)s"
-    formatter = Formatter(format)
+    log_format = "%(levelname)s: %(asctime)s - %(message)s"
+    formatter = Formatter(log_format)
 
     handler = StreamHandler()
     handler.setLevel(INFO)
     handler.setFormatter(formatter)
 
-    logger = getLogger(settings.logger_name)
-    logger.setLevel(INFO)
-    logger.addHandler(handler)
-    return logger
+    _logger = getLogger(settings.logger_name)
+    _logger.setLevel(INFO)
+    _logger.addHandler(handler)
+    return _logger
 
 
 logger = setup_logging()

@@ -15,8 +15,8 @@ class HealthCommandResponse(CommandResponse):
 
 
 class HealthCommandHandler(CommandHandler):
-    def __init__(self, logger: Logger = logger) -> None:
-        self._logger = logger
+    def __init__(self, _logger: Logger = logger) -> None:
+        self._logger = _logger
 
     def execute(self, command: HealthCommand) -> HealthCommandResponse:
         command_id = command.command_id

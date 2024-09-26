@@ -24,9 +24,9 @@ class SayHelloCommandResponse(CommandResponse):
 
 
 class SayHelloCommandHandler(CommandHandler):
-    def __init__(self, hello_client: HelloClient, logger: Logger = logger) -> None:
+    def __init__(self, hello_client: HelloClient, _logger: Logger = logger) -> None:
         self._hello_client = hello_client
-        self._logger = logger
+        self._logger = _logger
 
     def execute(self, command: SayHelloCommand) -> SayHelloCommandResponse:
         command_id = command.command_id
