@@ -1,26 +1,27 @@
-[tool.poetry]
+[project]
 name = "fastapi-boilerplate"
 version = "0.1.0"
 description = "This repository is a FastAPI boilerplate to use as a fast starter point"
-authors = ["Pedro López Mareque <pedro.lopez.mareque@gmail.com>"]
-license = "MIT"
+authors = [{ name = "Pedro López Mareque", email = "pedro.lopez.mareque@gmail.com" }]
+requires-python = "~=3.12"
 readme = "README.md"
+license = "MIT"
+dependencies = [
+    "fastapi[standard]>=0.115.0,<0.116",
+    "pydantic-settings>=2.5.2,<3",
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-fastapi = {extras = ["standard"], version = "^0.115.0"}
-pydantic-settings = "^2.5.2"
+[dependency-groups]
+test = [
+    "pytest>=8.3.3,<9",
+    "pytest-xdist>=3.6.1,<4",
+    "pytest-watch>=4.2.0,<5",
+    "expects>=0.9.0,<0.10",
+    "doublex>=1.9.6.1,<2",
+    "coverage>=7.6.1,<8",
+    "mypy>=1.11.2,<2",
+    "ruff>=0.6.7,<0.7",
+]
 
-[tool.poetry.group.test.dependencies]
-pytest = "^8.3.3"
-pytest-xdist = "^3.6.1"
-pytest-watch = "^4.2.0"
-expects = "^0.9.0"
-doublex = "^1.9.6.1"
-coverage = "^7.6.1"
-mypy = "^1.11.2"
-ruff = "^0.6.7"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.uv]
+default-groups = ["test"]

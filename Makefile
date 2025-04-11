@@ -16,69 +16,68 @@ build: ## Install the app packages
 
 .PHONY: install
 install: ## Install the app packages
-	rm -rf poetry.lock
-	poetry install
+	rm -rf uv.lock
+	uv sync
 
 .PHONY: update
 update: ## Updates the app packages
-	poetry update
+	uv sync
 
 .PHONY: add-package
 add-package: ## Installs a new package in the app. ex: make install package=XXX
-	poetry add $(package)
-	poetry install
+	uv add $(package)
 
 .PHONY: run
 run: ## Runs the app in production mode
-	OPENAPI_URL= poetry run fastapi run
+	OPENAPI_URL= uv run fastapi run
 
 .PHONY: dev
 dev: ## Runs the app in development mode
-	poetry run fastapi dev
+	uv run fastapi dev
 
 .PHONY: check-typing
 check-typing:  ## Run a static analyzer over the code to find issues
-	poetry run mypy .
+	uv run mypy .
 
 .PHONY: check-lint
 check-lint: ## Checks the code style
-	poetry run ruff check
+	uv run ruff check
 
 .PHONY: lint
 lint: ## Lints the code format
-	poetry run ruff check --fix
+	uv run ruff check --fix
 
 .PHONY: check-format
 check-format:  ## Check format python code
-	poetry run ruff format --check
+	uv run ruff format --check
 
 .PHONY: format
 format:  ## Format python code
-	poetry run ruff format
+	uv run ruff format
 
 .PHONY: test-unit
 test-unit: ## Run unit tests
-	poetry run pytest -n auto tests/unit -ra
+	uv run pytest -n auto tests/unit -ra
 
 .PHONY: test-integration
 test-integration: ## Run integration tests
-	poetry run pytest -n auto tests/integration -ra
+	uv run pytest -n auto tests/integration -ra
 
 .PHONY: test-acceptance
 test-acceptance: ## Run acceptance tests
-	poetry run pytest -n auto tests/acceptance -ra
+	uv run pytest -n auto tests/acceptance -ra
 
 .PHONY: test
 test: test-unit test-integration test-acceptance ## Run all the tests
 
 .PHONY: watch
 watch: ## Run all the tests in watch mode
-	poetry run ptw --runner "pytest -n auto tests -ra"
+	uv run ptw --runner "pytest -n auto tests -ra"
 
 .PHONY: coverage
 coverage: ## Generates the coverage report
-	poetry run coverage run --branch -m pytest tests
-	poetry run coverage html
+	uv run coverage run --branch -m pytest tests
+	uv run coverage html
 	@open "${PWD}/htmlcov/index.html"
 
 .PHONY: pre-commit

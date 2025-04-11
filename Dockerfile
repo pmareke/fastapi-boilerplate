@@ -4,11 +4,11 @@ RUN apk update --no-cache && apk upgrade --no-cache --available
 
 WORKDIR /code
 
-RUN pip install poetry
+RUN pip install uv
 
 COPY pyproject.toml /code
 
-RUN poetry install --without test
+RUN uv sync
 
 COPY main.py /code/main.py
 
@@ -16,4 +16,4 @@ COPY src /code/src
 
 EXPOSE 8000
 
-CMD ["OPENAPI_URL=", "poetry", "run", "fastapi", "run"]
+CMD ["OPENAPI_URL=", "uv", "run", "fastapi", "run"]

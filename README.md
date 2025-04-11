@@ -7,7 +7,7 @@
 
 ## Requirements
 
-- You only need to have [Poetry](https://python-poetry.org) installed.
+- You only need to have [uv](https://docs.astral.sh/uv) installed.
 
 ## Folder structure
 
@@ -48,7 +48,7 @@ _In order to create a commit you have to pass the pre-commit phase which runs th
 
 ## Packages
 
-This project uses [Poetry](https://python-poetry.org) as the package manager.
+This project uses [uv](https://docs.astral.sh/uv) as the package manager.
 
 ### Testing
 
