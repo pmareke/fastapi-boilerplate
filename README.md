@@ -1,4 +1,4 @@
-# FastAPI Boilerplate ![status](https://github.com/pmareke/python-boilerplate/actions/workflows/app.yml/badge.svg)
+# FastAPI Boilerplate ![status](https://github.com/pmareke/fastapi-boilerplate/actions/workflows/app.yml/badge.svg)
 
 - This repository is meant to be used as a fast starter point.
 - The Python version is the 3.12.
