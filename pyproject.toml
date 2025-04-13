@@ -2,7 +2,9 @@
 name = "fastapi-boilerplate"
 version = "0.1.0"
 description = "This repository is a FastAPI boilerplate to use as a fast starter point"
-authors = [{ name = "Pedro López Mareque", email = "pedro.lopez.mareque@gmail.com" }]
+authors = [
+  { name = "Pedro López Mareque", email = "pedro.lopez.mareque@gmail.com" }
+]
 requires-python = "==3.12.8"
 readme = "README.md"
 license = "MIT"
