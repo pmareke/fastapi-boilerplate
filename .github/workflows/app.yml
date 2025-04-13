@@ -21,10 +21,6 @@ jobs:
     - name: Install dependencies
       run: make install
     - name: Check style, format and lint
-      run: |
-        make check-lint
-        make check-typing
-        make check-format
+      run: make checks
     - name: Tests
-      run: |
-        make test
+      run: make test

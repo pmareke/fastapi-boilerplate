@@ -56,6 +56,9 @@ check-format:  ## Check format python code
 format:  ## Format python code
 	uv run ruff format
 
+.PHONY: checks
+checks: check-lint check-format check-typing  ## Run all checks
+
 .PHONY: test-unit
 test-unit: ## Run unit tests
 	uv run pytest -n auto tests/unit -ra
