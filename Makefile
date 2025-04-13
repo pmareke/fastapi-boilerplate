@@ -17,6 +17,7 @@ build: ## Install the app packages
 .PHONY: install
 install: ## Install the app packages
 	rm -rf uv.lock
+	uv python pin 3.12.8
 	uv sync
 
 .PHONY: update

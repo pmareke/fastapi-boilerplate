@@ -1,13 +1,16 @@
 # FastAPI Boilerplate ![status](https://github.com/pmareke/fastapi-boilerplate/actions/workflows/app.yml/badge.svg)
 
 - This repository is meant to be used as a fast starter point.
-- The Python version is the 3.12.
+- The Python version is the 3.12.8.
 - The project has configured a [Github Action](https://github.com/pmareke/fastapi-boilerplate/actions) which runs on every push to the `main` branch.
 - The project has a `Dockerfile` ready to use to deploy the app in production.
 
 ## Requirements
 
 - You only need to have [uv](https://docs.astral.sh/uv) installed.
+- In order to work in the project you need to activate the **virtual environment**, you can do it:
+    - Manually with the following command `source .venv/bin/activate`.
+    - Automatically with [pyautoenv](https://github.com/hsaunders1904/pyautoenv).
 
 ## Folder structure
 
