@@ -15,7 +15,7 @@ class TestSayHelloCommandHandler:
         command = SayHelloCommand(name)
         with Mimic(Stub, DummyHelloClient) as hello_client:
             hello_client.get(name).returns(name)
-        handler = SayHelloCommandHandler(hello_client)
+        handler = SayHelloCommandHandler(hello_client)  # type: ignore
 
         response = handler.execute(command)
 
@@ -26,7 +26,7 @@ class TestSayHelloCommandHandler:
         command = SayHelloCommand(name)
         with Mimic(Stub, DummyHelloClient) as hello_client:
             hello_client.get(name).raises(SayHelloClientException(name))
-        handler = SayHelloCommandHandler(hello_client)
+        handler = SayHelloCommandHandler(hello_client)  # type: ignore
 
         error_message = f"Command {command.command_id}: '{name}' invalid name"
         expect(lambda: handler.execute(command)).to(
