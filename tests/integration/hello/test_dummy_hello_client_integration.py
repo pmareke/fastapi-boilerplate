@@ -18,6 +18,4 @@ class TestDummyHelloClientIntegration:
         client = DummyHelloClient()
 
         error_message = f"'{expected_name}' invalid name"
-        expect(lambda: client.get(expected_name)).to(
-            raise_error(SayHelloClientException, error_message)
-        )
+        expect(lambda: client.get(expected_name)).to(raise_error(SayHelloClientException, error_message))

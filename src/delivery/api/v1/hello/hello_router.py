@@ -26,9 +26,7 @@ async def say_hello_command_handler(
 
 
 @hello.get("/hello/{name}", response_model=HelloResponse)
-def get(
-    name: str, handler: CommandHandler = Depends(say_hello_command_handler)
-) -> HelloResponse:
+def get(name: str, handler: CommandHandler = Depends(say_hello_command_handler)) -> HelloResponse:
     command = SayHelloCommand(name)
     try:
         response = handler.execute(command)

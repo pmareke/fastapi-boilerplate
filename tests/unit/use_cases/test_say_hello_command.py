@@ -29,6 +29,4 @@ class TestSayHelloCommandHandler:
         handler = SayHelloCommandHandler(hello_client)  # type: ignore
 
         error_message = f"Command {command.command_id}: '{name}' invalid name"
-        expect(lambda: handler.execute(command)).to(
-            raise_error(SayHelloCommandHandlerException, error_message)
-        )
+        expect(lambda: handler.execute(command)).to(raise_error(SayHelloCommandHandlerException, error_message))
