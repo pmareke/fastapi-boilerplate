@@ -17,6 +17,10 @@ local-setup: pre-requirements ## Sets up the local environment (e.g. install git
 build: pre-requirements ## Install the app packages
 	docker build -t fastapi-boilerplate .
 
+.PHONY: up
+up: pre-requirements build ## Run the app inside docker
+	docker run -p 8000:8000 fastapi-boilerplate
+
 .PHONY: install
 install: pre-requirements ## Install the app packages
 	uv python install 3.12.8

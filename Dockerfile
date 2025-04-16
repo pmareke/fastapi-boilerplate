@@ -1,14 +1,17 @@
-FROM python:3.12-alpine
+FROM python:3.12.8-alpine
 
-RUN apk update --no-cache && apk upgrade --no-cache --available
+# Hide the docs
+ENV OPENAPI_URL= 
+
+RUN pip install --no-cache-dir uv
+
+RUN uv python pin 3.12.8
 
 WORKDIR /code
 
-RUN pip install uv
-
 COPY pyproject.toml /code
 
-RUN uv sync
+RUN uv sync --no-group test
 
 COPY main.py /code/main.py
 
@@ -16,4 +19,4 @@ COPY src /code/src
 
 EXPOSE 8000
 
-CMD ["OPENAPI_URL=", "uv", "run", "fastapi", "run"]
+CMD ["uv", "run", "fastapi", "run"]
