@@ -10,7 +10,7 @@ from src.domain.hello_client import HelloClient
 
 
 class SayHelloCommand(Command):
-    def __init__(self, name: str):
+    def __init__(self, name: str) -> None:
         self.name = name
         super().__init__()
 
