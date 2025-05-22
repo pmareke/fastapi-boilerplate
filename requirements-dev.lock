@@ -33,6 +33,8 @@ docopt==0.6.2
 doublex==1.9.6.1
 email-validator==2.2.0
     # via fastapi
+execnet==2.1.1
+    # via pytest-xdist
 expects==0.9.0
 fastapi==0.115.12
     # via fastapi-boilerplate
@@ -78,7 +80,9 @@ pyhamcrest==2.1.0
     # via doublex
 pytest==8.3.5
     # via pytest-watch
+    # via pytest-xdist
 pytest-watch==4.2.0
+pytest-xdist==3.6.1
 python-dotenv==1.1.0
     # via pydantic-settings
     # via uvicorn
