@@ -23,72 +23,72 @@ up: pre-requirements build ## Run the app inside docker
 
 .PHONY: install
 install: pre-requirements ## Install the app packages
-	rye pin 3.12.8
-	rye sync
+	uv python install 3.12.8
+	uv python pin 3.12.8
+	uv sync
 
 .PHONY: update
 update: pre-requirements ## Updates the app packages
-	rye lock --upgrade
+	uv lock --upgrade
 
 .PHONY: add-package
 add-package: pre-requirements ## Installs a new package in the app. ex: make install package=XXX
-	rye add $(package)
+	uv add $(package)
 
 .PHONY: run
 run: pre-requirements ## Runs the app in production mode
-	OPENAPI_URL= rye run fastapi run
+	OPENAPI_URL= uv run fastapi run
 
 .PHONY: dev
 dev: pre-requirements ## Runs the app in development mode
-	rye run fastapi dev
+	uv run fastapi dev
 
 .PHONY: check-typing
 check-typing: pre-requirements  ## Run a static analyzer over the code to find issues
-	rye run ty check .
+	uv run ty check .
 
 .PHONY: check-lint
 check-lint: pre-requirements ## Checks the code style
-	rye run ruff check
+	uv run ruff check
 
 .PHONY: lint
 lint: pre-requirements ## Lints the code format
-	rye run ruff check --fix
+	uv run ruff check --fix
 
 .PHONY: check-format
 check-format: pre-requirements  ## Check format python code
-	rye run ruff format --check
+	uv run ruff format --check
 
 .PHONY: format
 format: pre-requirements  ## Format python code
-	rye run ruff format
+	uv run ruff format
 
 .PHONY: checks
 checks: pre-requirements check-lint check-format check-typing  ## Run all checks
 
 .PHONY: test-unit
 test-unit: pre-requirements ## Run unit tests
-	rye run pytest tests/unit -ra -x --durations=5
+	uv run pytest -n auto tests/unit -ra -x --durations=5
 
 .PHONY: test-integration
 test-integration: pre-requirements ## Run integration tests
-	rye run pytest tests/integration -ra -x --durations=5
+	uv run pytest -n auto tests/integration -ra -x --durations=5
 
 .PHONY: test-acceptance
 test-acceptance: pre-requirements ## Run acceptance tests
-	rye run pytest tests/acceptance -ra -x --durations=5
+	uv run pytest -n auto tests/acceptance -ra -x --durations=5
 
 .PHONY: test
-test:  ## Run all the tests
-	rye test
+test: test-unit test-integration test-acceptance ## Run all the tests
 
 .PHONY: watch
 watch: pre-requirements ## Run all the tests in watch mode
-	rye run ptw --runner "pytest -n auto tests -ra -x --durations=5"
+	uv run ptw --runner "pytest -n auto tests -ra -x --durations=5"
 
 .PHONY: coverage
 coverage: pre-requirements ## Generates the coverage report
-	rye run coverage run --branch -m pytest tests
-	rye run coverage html
+	uv run coverage run --branch -m pytest tests
+	uv run coverage html
 	@open "${PWD}/htmlcov/index.html"
 
 .PHONY: pre-commit
