@@ -68,15 +68,15 @@ checks: pre-requirements check-lint check-format check-typing  ## Run all checks
 
 .PHONY: test-unit
 test-unit: pre-requirements ## Run unit tests
-	uv run pytest -n auto tests/unit -ra -x --durations=5
+	uv run pytest tests/unit -ra -x --durations=5
 
 .PHONY: test-integration
 test-integration: pre-requirements ## Run integration tests
-	uv run pytest -n auto tests/integration -ra -x --durations=5
+	uv run pytest tests/integration -ra -x --durations=5
 
 .PHONY: test-acceptance
 test-acceptance: pre-requirements ## Run acceptance tests
-	uv run pytest -n auto tests/acceptance -ra -x --durations=5
+	uv run pytest tests/acceptance -ra -x --durations=5
 
 .PHONY: test
 test: test-unit test-integration test-acceptance ## Run all the tests
