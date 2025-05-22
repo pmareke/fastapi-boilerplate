@@ -83,7 +83,7 @@ test: test-unit test-integration test-acceptance ## Run all the tests
 
 .PHONY: watch
 watch: pre-requirements ## Run all the tests in watch mode
-	uv run ptw --runner "pytest -n auto tests -ra -x --durations=5"
+	uv run ptw --runner "pytest tests -ra -x --durations=5"
 
 .PHONY: coverage
 coverage: pre-requirements ## Generates the coverage report
