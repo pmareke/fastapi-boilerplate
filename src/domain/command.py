@@ -11,10 +11,10 @@ class Command:
 class CommandResponse(ABC):
     @abstractmethod
     def message(self) -> Any:  # noqa: ANN401
-        raise NotImplementedError()
+        raise NotImplementedError
 
 
 class CommandHandler(ABC):
     @abstractmethod
     def execute(self, command: Command) -> CommandResponse:
-        raise NotImplementedError()
+        raise NotImplementedError
