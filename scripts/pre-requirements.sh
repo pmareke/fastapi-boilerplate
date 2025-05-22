@@ -1,8 +1,8 @@
 #!/bin/bash
 
-function uv_is_not_installed() {
-    if ! command -v uv &> /dev/null; then
-        echo "uv is not installed. Please go to https://docs.astral.sh/uv/getting-started/installation/."
+function rye_is_not_installed() {
+    if ! command -v rye &> /dev/null; then
+        echo "rye is not installed. Please go to https://docs.astral.sh/rye/getting-started/installation/."
         return 1
     fi
     return 0
@@ -16,5 +16,5 @@ function docker_is_not_installed() {
     return 0
 }
 
-uv_is_not_installed
+rye_is_not_installed
 docker_is_not_installed

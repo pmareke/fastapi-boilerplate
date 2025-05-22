@@ -23,72 +23,72 @@ up: pre-requirements build ## Run the app inside docker
 
 .PHONY: install
 install: pre-requirements ## Install the app packages
-	uv python install 3.12.8
-	uv python pin 3.12.8
-	uv sync
+	rye pin 3.12.8
+	rye sync
 
 .PHONY: update
 update: pre-requirements ## Updates the app packages
-	uv lock --upgrade
+	rye lock --upgrade
 
 .PHONY: add-package
 add-package: pre-requirements ## Installs a new package in the app. ex: make install package=XXX
-	uv add $(package)
+	rye add $(package)
 
 .PHONY: run
 run: pre-requirements ## Runs the app in production mode
-	OPENAPI_URL= uv run fastapi run
+	OPENAPI_URL= rye run fastapi run
 
 .PHONY: dev
 dev: pre-requirements ## Runs the app in development mode
-	uv run fastapi dev
+	rye run fastapi dev
 
 .PHONY: check-typing
 check-typing: pre-requirements  ## Run a static analyzer over the code to find issues
-	uv run ty check .
+	rye run ty check .
 
 .PHONY: check-lint
 check-lint: pre-requirements ## Checks the code style
-	uv run ruff check
+	rye run ruff check
 
 .PHONY: lint
 lint: pre-requirements ## Lints the code format
-	uv run ruff check --fix
+	rye run ruff check --fix
 
 .PHONY: check-format
 check-format: pre-requirements  ## Check format python code
-	uv run ruff format --check
+	rye run ruff format --check
 
 .PHONY: format
 format: pre-requirements  ## Format python code
-	uv run ruff format
+	rye run ruff format
 
 .PHONY: checks
 checks: pre-requirements check-lint check-format check-typing  ## Run all checks
 
 .PHONY: test-unit
 test-unit: pre-requirements ## Run unit tests
-	uv run pytest -n auto tests/unit -ra -x --durations=5
+	rye run pytest tests/unit -ra -x --durations=5
 
 .PHONY: test-integration
 test-integration: pre-requirements ## Run integration tests
-	uv run pytest -n auto tests/integration -ra -x --durations=5
+	rye run pytest tests/integration -ra -x --durations=5
 
 .PHONY: test-acceptance
 test-acceptance: pre-requirements ## Run acceptance tests
-	uv run pytest -n auto tests/acceptance -ra -x --durations=5
+	rye run pytest tests/acceptance -ra -x --durations=5
 
 .PHONY: test
-test: test-unit test-integration test-acceptance ## Run all the tests
+test:  ## Run all the tests
+	rye test
 
 .PHONY: watch
 watch: pre-requirements ## Run all the tests in watch mode
-	uv run ptw --runner "pytest -n auto tests -ra -x --durations=5"
+	rye run ptw --runner "pytest -n auto tests -ra -x --durations=5"
 
 .PHONY: coverage
 coverage: pre-requirements ## Generates the coverage report
-	uv run coverage run --branch -m pytest tests
-	uv run coverage html
+	rye run coverage run --branch -m pytest tests
+	rye run coverage html
 	@open "${PWD}/htmlcov/index.html"
 
 .PHONY: pre-commit
