@@ -37,58 +37,58 @@ add-package: pre-requirements ## Installs a new package in the app. ex: make ins
 
 .PHONY: run
 run: pre-requirements ## Runs the app in production mode
-	OPENAPI_URL= uv run fastapi run
+	OPENAPI_URL= fastapi run
 
 .PHONY: dev
 dev: pre-requirements ## Runs the app in development mode
-	uv run fastapi dev
+	fastapi dev
 
 .PHONY: check-typing
 check-typing: pre-requirements  ## Run a static analyzer over the code to find issues
-	uv run ty check .
+	ty check .
 
 .PHONY: check-lint
 check-lint: pre-requirements ## Checks the code style
-	uv run ruff check
+	ruff check
 
 .PHONY: lint
 lint: pre-requirements ## Lints the code format
-	uv run ruff check --fix
+	ruff check --fix
 
 .PHONY: check-format
 check-format: pre-requirements  ## Check format python code
-	uv run ruff format --check
+	ruff format --check
 
 .PHONY: format
 format: pre-requirements  ## Format python code
-	uv run ruff format
+	ruff format
 
 .PHONY: checks
 checks: pre-requirements check-lint check-format check-typing  ## Run all checks
 
 .PHONY: test-unit
 test-unit: pre-requirements ## Run unit tests
-	uv run pytest tests/unit -ra -x --durations=5
+	pytest tests/unit -ra -x --durations=5
 
 .PHONY: test-integration
 test-integration: pre-requirements ## Run integration tests
-	uv run pytest tests/integration -ra -x --durations=5
+	pytest tests/integration -ra -x --durations=5
 
 .PHONY: test-acceptance
 test-acceptance: pre-requirements ## Run acceptance tests
-	uv run pytest tests/acceptance -ra -x --durations=5
+	pytest tests/acceptance -ra -x --durations=5
 
 .PHONY: test
 test: test-unit test-integration test-acceptance ## Run all the tests
 
 .PHONY: watch
 watch: pre-requirements ## Run all the tests in watch mode
-	uv run ptw --runner "pytest tests -ra -x --durations=5"
+	ptw --runner "pytest tests -ra -x --durations=5"
 
 .PHONY: coverage
 coverage: pre-requirements ## Generates the coverage report
-	uv run coverage run --branch -m pytest tests
-	uv run coverage html
+	coverage run --branch -m pytest tests
+	coverage html
 	@open "${PWD}/htmlcov/index.html"
 
 .PHONY: pre-commit
