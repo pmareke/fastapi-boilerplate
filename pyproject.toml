@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [dependency-groups]
-test = [
+dev = [
     "pytest>=8.3.3,<9",
     "pytest-watch>=4.2.0,<5",
     "expects>=0.9.0,<0.10",
@@ -25,4 +25,4 @@ test = [
 ]
 
 [tool.uv]
-default-groups = ["test"]
+default-groups = ["dev"]
