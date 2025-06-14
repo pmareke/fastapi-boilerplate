@@ -33,4 +33,4 @@ def get(name: str, handler: CommandHandler = Depends(say_hello_command_handler))
         message = response.message()
         return HelloResponse(message=message)
     except SayHelloCommandHandlerException as ex:
-        raise HTTPException(status_code=BAD_REQUEST, detail=f"{ex}")
+        raise HTTPException(status_code=BAD_REQUEST, detail=f"{ex}") from ex
